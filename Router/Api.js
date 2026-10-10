@@ -64,15 +64,15 @@ Api.post("/login",async(req,res)=>{
   }    
 
 })
-Api.get("/verify",async (req,res,next)=>{
+Api.get("/verify",async (req,res)=>{
     try{
       const token=req.cookies.token;
       if(!token){
            return res.status(401).json({
                    verified: false,
-        message: "Please login first"
-      });
-      }
+                    message: "Please login first"
+                    });
+                    }
          const decode= await jwt.verify(token,process.env.my_secrt); 
          req.name=decode.name;
     return res.json({verified: true, message:req.name  });

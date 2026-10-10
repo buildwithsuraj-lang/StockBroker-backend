@@ -7,7 +7,7 @@ const Api=require('./Router/Api')
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app=express();
-
+database();
 app.use(
   cors({
     origin: process.env.ORIGN,
