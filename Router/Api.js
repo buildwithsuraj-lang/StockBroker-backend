@@ -4,6 +4,7 @@ const logins=require('../databases/AuthSchema')
 const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 const nodemailer = require("nodemailer");
+const cors = require("cors");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -59,7 +60,7 @@ Api.post("/login",async(req,res)=>{
   message: "Login successful"
 });
   }catch(error){
-    console.log(error)
+    res.json({sucess:false,message:"internal server error"})
   }    
 
 })
